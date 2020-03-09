@@ -9,7 +9,7 @@ class Stage(object):
             self.processor = Processor()
         elif config_path.exists():
             config = utils.load_yaml(config_path)
-            self.processor = utils.create_instance(config[mode], *args, **kwargs) if mode else Processor()
+            self.processor = utils.create_instance(config[mode], *args, **kwargs)
         else:
             raise FileNotFoundError('{} not found.'.format(config_path))
 
