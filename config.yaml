@@ -1,0 +1,5 @@
+number_detection:
+  module: modules.number_detection.number_detection
+  name: NumberDetection
+  NumberDetection:
+    mode: '''neural_net'''

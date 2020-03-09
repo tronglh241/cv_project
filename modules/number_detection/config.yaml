@@ -1,0 +1,7 @@
+neural_net:
+  module: modules.number_detection.neural_net.detector
+  name: NeuralNet
+  NeuralNet:
+    image_size: (28, 28)
+    weight_path: '''models/weights/mnist_cnn.pth'''
+    cuda: False
