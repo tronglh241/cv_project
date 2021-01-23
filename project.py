@@ -6,7 +6,7 @@ class Project(object):
         super(Project, self).__init__()
 
         config = utils.load_yaml(config_path)
-        self.number_detector = utils.create_instance(config['number_detection'])
+        self.number_detector = utils.eval_config(config['number_detection'])
 
     def __call__(self, image_path):
         info, = self.number_detector(image_path)

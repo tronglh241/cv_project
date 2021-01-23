@@ -30,7 +30,7 @@ class NeuralNet(Processor):
 
     def process(self, image, info):
         return self.model(image), info
-        
+
     def postprocess(self, pred, info):
         pred = pred.squeeze(dim=0)
         return pred.argmax().item(), info

@@ -1,8 +1,7 @@
 import cv2
-import utils
 
-from abstract.stage import Stage
 from abstract.dao import DAO
+from abstract.stage import Stage
 
 
 class NumberDetection(Stage):
@@ -22,4 +21,4 @@ class Info(DAO):
     def __init__(self, image_path=None, number=None):
         super(Info, self).__init__()
         self.image_path = image_path
-        self.number = number      
+        self.number = number

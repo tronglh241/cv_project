@@ -1,4 +1,4 @@
-class Processor(object):
+class Processor:
     def preprocess(self, *args):
         return args
 
@@ -7,7 +7,7 @@ class Processor(object):
 
     def postprocess(self, *args):
         return args
-        
+
     def __call__(self, *args):
         output = self.preprocess(*args)
         output = self.process(*output)
