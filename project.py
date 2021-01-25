@@ -1,7 +1,7 @@
 import utils
 
 
-class Project(object):
+class Project:
     def __init__(self, config_path=utils.Path(__file__).with_name('config.yaml')):
         super(Project, self).__init__()
 

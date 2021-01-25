@@ -4,7 +4,7 @@ import inspect
 from abstract.processor import Processor
 
 
-class Stage(object):
+class Stage:
     def __init__(self, mode=None, config_path=None, *args, **kwargs):
         if config_path is None:
             config_path = utils.Path(inspect.getfile(self.__class__)).with_name('config.yaml')
