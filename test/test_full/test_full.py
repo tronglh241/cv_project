@@ -1,15 +1,31 @@
 import os
 import sys
-sys.path.append(os.environ['PWD'])
+import pytest
 
 from pathlib import Path
-from project import Project
 
-if __name__ == '__main__':
-    image_dir = Path(sys.argv[1])
-    image_pattern = sys.argv[2]
+sys.path.append(os.environ['PWD'])
 
-    detector = Project()
+from project import Project  # noqa: E402
 
-    for image_path in image_dir.glob(image_pattern):
-        print(detector(str(image_path)))
+
+def image_paths():
+    image_dir = 'test/test_full/data'
+    image_pattern = '*.jpg'
+
+    image_paths = [str(image_path) for image_path in Path(image_dir).glob(image_pattern)]
+    return image_paths
+
+
+@pytest.fixture
+def detector():
+    return Project()
+
+
+@pytest.mark.parametrize('image_path', image_paths())
+def test_full(detector, image_path):
+    info = detector(image_path)
+    pred = str(info['number'])
+    target = Path(image_path).stem
+
+    assert pred == target
