@@ -1,6 +1,6 @@
 import cv2
 
-from abstract.dao import DAO
+from .dto import Info
 from abstract.stage import Stage
 
 
@@ -14,11 +14,4 @@ class NumberDetection(Stage):
     def postprocess(self, number, info):
         info.number = number
 
-        return info,
-
-
-class Info(DAO):
-    def __init__(self, image_path=None, number=None):
-        super(Info, self).__init__()
-        self.image_path = image_path
-        self.number = number
+        return info

@@ -1,3 +1,4 @@
+import os
 import yaml
 
 from pathlib import Path
@@ -6,8 +7,9 @@ from importlib import import_module
 
 def load_yaml(yaml_file):
     with open(yaml_file) as f:
-        configs = yaml.safe_load(f)
-    return configs
+        config = yaml.safe_load(f)
+
+    return config
 
 
 def abs_path(path):
@@ -17,6 +19,11 @@ def abs_path(path):
 def eval_config(config):
     def _eval_config(config):
         if isinstance(config, dict):
+            if '_base_' in config:
+                base_config = _eval_config(config.pop('_base_'))
+                base_config = load_yaml(base_config)
+                config = {**base_config, **config}
+
             for key, value in config.items():
                 if key not in ['module', 'class']:
                     config[key] = _eval_config(value)
@@ -34,6 +41,9 @@ def eval_config(config):
             return eval(config, {}, original_config)
         else:
             return config
+
+    if isinstance(config, (str, os.PathLike)):
+        config = load_yaml(config)
 
     original_config = config
     config = _eval_config(config)
