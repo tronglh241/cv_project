@@ -4,4 +4,4 @@ neural_net:
   NeuralNet:
     image_size: (28, 28)
     weight_path: '''models/weights/mnist_cnn.pth'''
-    cuda: False
+    device: '''cpu'''

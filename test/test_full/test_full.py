@@ -6,7 +6,7 @@ from pathlib import Path
 
 sys.path.append(os.environ['PWD'])
 
-from project import Project  # noqa: E402
+from cv_project import CVProject  # noqa: E402
 
 
 def image_paths():
@@ -19,7 +19,7 @@ def image_paths():
 
 @pytest.fixture
 def detector():
-    return Project()
+    return CVProject()
 
 
 @pytest.mark.parametrize('image_path', image_paths())

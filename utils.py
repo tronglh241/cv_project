@@ -13,7 +13,10 @@ def load_yaml(yaml_file):
 
 
 def abs_path(path):
-    return str(Path(__file__).parent.joinpath(path))
+    if Path(path).is_absolute():
+        return path
+    else:
+        return str(Path(__file__).parent.joinpath(path))
 
 
 def eval_config(config):
