@@ -1,8 +1,8 @@
 import os
-import yaml
-
-from pathlib import Path
 from importlib import import_module
+from pathlib import Path
+
+import yaml
 
 
 def load_yaml(yaml_file):

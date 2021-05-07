@@ -1,9 +1,11 @@
+from typing import Tuple
+
 import cv2
 import numpy as np
 
-from .dto import Info
-from typing import Tuple
 from abstract.stage import Stage
+
+from .dto import Info
 
 
 class NumberDetection(Stage):
@@ -13,7 +15,7 @@ class NumberDetection(Stage):
 
         return image, info
 
-    def postprocess(self, number: int, info: Info) -> Info:
+    def postprocess(self, number: int, info: Info) -> Tuple[Info]:
         info.number = number
 
-        return info
+        return info,

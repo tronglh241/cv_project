@@ -1,10 +1,10 @@
-import utils
 import inspect
-
 from pathlib import Path
-from typing import Any, Type, Union
-from abstract.processor import Processor
+from typing import Any, Tuple, Type, Union
+
+import utils
 from abstract.adapter import InAdapter, OutAdapter
+from abstract.processor import Processor
 
 
 class Stage:
@@ -21,13 +21,13 @@ class Stage:
                                                   default_processor_cls=OutAdapter,
                                                   default_config_filename='adapter.yaml')
 
-    def preprocess(self, *args):
+    def preprocess(self, *args: Any) -> Tuple:
         return args
 
-    def postprocess(self, *args):
+    def postprocess(self, *args: Any) -> Tuple:
         return args
 
-    def __call__(self, *args):
+    def __call__(self, *args: Any) -> Tuple:
         output = self.in_adapter(args)
         output = self.preprocess(*output)
         output = self.processor(*output)

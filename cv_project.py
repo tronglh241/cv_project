@@ -1,5 +1,4 @@
 import utils
-
 from abstract.dto import DTO
 from abstract.project import Project
 

@@ -1,8 +1,8 @@
 import os
 import sys
-import pytest
-
 from pathlib import Path
+
+import pytest
 
 sys.path.append(os.environ['PWD'])
 
@@ -24,7 +24,7 @@ def detector():
 
 @pytest.mark.parametrize('image_path', image_paths())
 def test_full(detector, image_path):
-    info = detector(image_path)
+    info, = detector(image_path)
     pred = str(info['number'])
     target = Path(image_path).stem
 

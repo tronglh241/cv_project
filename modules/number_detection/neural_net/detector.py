@@ -1,13 +1,15 @@
+from typing import Tuple, cast
+
 import cv2
-import torch
-import utils
 import numpy as np
+import torch
+from torchvision import transforms
+
+import utils
+from abstract.processor import Processor
+from models.definitions.Net import Net
 
 from ..dto import Info
-from typing import cast, Tuple
-from torchvision import transforms
-from models.definitions.Net import Net
-from abstract.processor import Processor
 
 
 class NeuralNet(Processor):
