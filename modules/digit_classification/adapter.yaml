@@ -1,0 +1,7 @@
+in_adapter:
+  module: modules.digit_classification.adapter
+  class: InAdapter
+
+out_adapter:
+  module: modules.digit_classification.adapter
+  class: OutAdapter

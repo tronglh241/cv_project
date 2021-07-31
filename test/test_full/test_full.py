@@ -4,7 +4,7 @@ from pathlib import Path
 
 import pytest
 
-sys.path.append(os.environ['PWD'])
+sys.path.append(os.getcwd())
 
 from cv_project import CVProject  # noqa: E402
 
@@ -19,7 +19,7 @@ def image_paths():
 
 @pytest.fixture
 def detector():
-    return CVProject()
+    return CVProject('configs/config.yaml')
 
 
 @pytest.mark.parametrize('image_path', image_paths())

@@ -18,9 +18,9 @@ class Project(abc.ABC):
             raise FileNotFoundError(f'{config_path} not found.')
 
     @abc.abstractmethod
-    def run(self, *args: Any) -> Any:
+    def run(self, *args: Any, **kwargs: Any) -> Any:
         pass
 
-    def __call__(self, *args: Any) -> Any:
-        output = self.run(*args)
+    def __call__(self, *args: Any, **kwargs: Any) -> Any:
+        output = self.run(*args, **kwargs)
         return output

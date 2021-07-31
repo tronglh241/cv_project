@@ -1,0 +1,7 @@
+digit_classification:
+  module: modules.digit_classification.digit_classification
+  class: DigitClassification
+  DigitClassification:
+    mode: '''neural_net'''
+    in_adapter_mode: '''in_adapter'''
+    out_adapter_mode: '''out_adapter'''

@@ -1,5 +1,5 @@
 neural_net:
-  module: modules.number_detection.neural_net.detector
+  module: modules.digit_classification.neural_net.detector
   class: NeuralNet
   NeuralNet:
     image_size: (28, 28)

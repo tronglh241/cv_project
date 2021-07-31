@@ -2,9 +2,9 @@ import inspect
 from pathlib import Path
 from typing import Any, Tuple, Type, Union
 
-import utils
 from abstract.adapter import InAdapter, OutAdapter
 from abstract.processor import Processor
+from utils.config import CfgNode
 
 
 class Stage:
@@ -45,8 +45,8 @@ class Stage:
         if mode is None:
             processor = default_processor_cls()
         elif config_path.exists():
-            config = utils.load_yaml(config_path)
-            processor = utils.eval_config(config[mode])
+            config = CfgNode.load_yaml_with_base(str(config_path))
+            processor, _ = config[mode].eval()
         else:
             raise FileNotFoundError(f'{config_path} not found.')
 
